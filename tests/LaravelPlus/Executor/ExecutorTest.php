@@ -15,35 +15,35 @@ class ExecutorTest extends TestCase
      */
     public function execute_with_trait_test()
     {
-        $result = $this->execute(function ($pass, $fail) {
-            return $pass('Hello world');
+        $result = $this->execute(function ($success, $error) {
+            return $success('Hello world');
         });
 
-        $this->assertTrue($result->isPass());
+        $this->assertTrue($result->isSuccess());
     }
 
     /**
      * @test
      */
-    public function execute_is_pass_test()
+    public function execute_is_success_test()
     {
-        $result = $this->execute(function ($pass, $fail) {
-            return $pass('Hello world');
+        $result = $this->execute(function ($success, $error) {
+            return $success('Hello world');
         });
 
-        $this->assertTrue($result->isPass());
+        $this->assertTrue($result->isSuccess());
     }
 
     /**
      * @test
      */
-    public function execute_is_fail_test()
+    public function execute_has_error_test()
     {
-        $result = $this->execute(function ($pass, $fail) {
-            return $fail('Hello world');
+        $result = $this->execute(function ($success, $error) {
+            return $error('Hello world');
         });
 
-        $this->assertTrue($result->isFail());
+        $this->assertTrue($result->hasError());
     }
 
     /**
@@ -52,14 +52,14 @@ class ExecutorTest extends TestCase
     public function execute_with_dynamic_variable_test()
     {
         $input = 'Hello world';
-        $result = $this->execute(function ($pass, $fail) use ($input) {
+        $result = $this->execute(function ($success, $error) use ($input) {
             if ($input == 'Hello world') {
-                return $pass();
+                return $success();
             }
 
-            return $fail();
+            return $error();
         });
 
-        $this->assertTrue($result->isPass());
+        $this->assertTrue($result->isSuccess());
     }
 }
