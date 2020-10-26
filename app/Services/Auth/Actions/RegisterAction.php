@@ -46,7 +46,7 @@ class RegisterAction
         $validator = Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|unique:users,email',
-            'password' => 'required'
+            'password' => 'required|min:6'
         ]);
 
         return $validator;
