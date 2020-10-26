@@ -30,7 +30,7 @@ class UpdateUserAction
 
     private function update(User $user, array $data)
     {
-        return User::update($user, $data);
+        return $user->update($data);
     }
 
     private function validate($data)
