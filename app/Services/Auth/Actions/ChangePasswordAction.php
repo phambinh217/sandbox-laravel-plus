@@ -15,7 +15,7 @@ class ChangePasswordAction
 
     public function handle(User $user, array $data)
     {
-        return $this->execute(function ($success, $error) use ($data) {
+        return $this->execute(function ($success, $error) use ($data, $user) {
             $validator = $this->validate($data);
 
             if ($validator->fails()) {

@@ -26,6 +26,23 @@ class AuthController extends Controller
         ]);
     }
 
+    public function changePassword(AuthService $authService, Request $request)
+    {
+        $result = $authService->changePassword($request->user(), $request->all());
+
+        if ($result->hasError()) {
+            return response()->json([
+                'hasError' => true,
+                'message' => $result->errorMessage,
+                'errors' => $result->detailError->errors(),
+            ], 422);
+        }
+
+        return response()->json([
+            'hasError' => false
+        ]);
+    }
+
     public function login(AuthService $authService, Request $request)
     {
         $result = $authService->login($request->all());

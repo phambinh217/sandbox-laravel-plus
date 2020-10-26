@@ -18,7 +18,11 @@ class UserFormat
 
     public function formatItem(User $user)
     {
-        return $user;
+        return [
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+        ];
     }
 
     public function formatAuth(User $user)

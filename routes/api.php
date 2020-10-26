@@ -25,5 +25,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::delete('auth/logout', 'AuthController@logout')->name('auth.logout');
         Route::get('auth/user', 'AuthController@user')->name('auth.user');
+        Route::put('auth/password', 'AuthController@changePassword')->name('auth.change-password');
     });
 });
