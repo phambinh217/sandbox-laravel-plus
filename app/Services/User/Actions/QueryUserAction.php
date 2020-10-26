@@ -10,9 +10,13 @@ class QueryUserAction
     {
         $query = User::query();
 
-        // if (isset($options['id'])) {
-        //    $query->where('id', $options['id']);
-        // }
+        if (isset($options['id'])) {
+           $query->where('id', $options['id']);
+        }
+
+        if (isset($options['email'])) {
+            $query->where('email', $options['email']);
+        }
 
         return $query;
     }
