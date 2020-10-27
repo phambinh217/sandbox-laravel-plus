@@ -2,32 +2,28 @@
 
 namespace App\Services\Auth\Actions;
 
-use Phambinh217\LaravelPlus\Executor\Execute;
 use Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
+use Phambinh217\LaravelPlus\Executor\Result;
 use Arr;
 use Hash;
 
 class RegisterAction
 {
-    use Execute;
-
     public function handle(array $data)
     {
-        return $this->execute(function ($success, $error) use ($data) {
-            $validator = $this->validate($data);
+        $validator = $this->validate($data);
 
-            if ($validator->fails()) {
-                $message = $validator->errors()->first();
-                return $error($message, new ValidationException($validator));
-            }
+        if ($validator->fails()) {
+            $message = $validator->errors()->first();
+            return Result::error($message, new ValidationException($validator));
+        }
 
-            $user = $this->create($data);
+        $user = $this->create($data);
 
-            return $success($user);
-        });
+        return Result::success($user);
     }
 
     private function create(array $data)
