@@ -6,12 +6,21 @@ const mix = require('laravel-mix');
  |--------------------------------------------------------------------------
  |
  | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel applications. By default, we are compiling the CSS
+ | for your Laravel application. By default, we are compiling the Sass
  | file for the application as well as bundling up all the JS files.
  |
  */
-
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix
+    .webpackConfig({
+        module: {
+            rules: [{
+                enforce: 'pre',
+                test: /\.(js|vue)$/,
+                loader: 'eslint-loader',
+                exclude: /node_modules/
+            }]
+        },
+    })
+    .js('resources/js/main.js', 'public/js/main.js')
+    .extract(['vue'], 'public/js/vendor.js')
+    .version()
