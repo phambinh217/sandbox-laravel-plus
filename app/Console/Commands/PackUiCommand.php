@@ -17,8 +17,9 @@ class PackUiCommand extends Pack
     {
         return [
             'app/Http/Controllers/MainController.php',
-            'resources/views/main.blade.php',
+            'public/img',
             'resources/js',
+            'resources/views/main.blade.php',
         ];
     }
 }
