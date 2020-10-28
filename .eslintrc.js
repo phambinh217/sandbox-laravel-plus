@@ -16,8 +16,8 @@ module.exports = {
     ],
     rules: {
         // 'indent': ['error', 4],
-        'vue/html-indent': ['error', 4],
-        'vue/script-indent': ['error', 4],
+        'vue/html-indent': ['error', 2],
+        'vue/script-indent': ['error', 2],
         'vue/max-attributes-per-line': [0, {
             'singleline': 2,
             'multiline': {

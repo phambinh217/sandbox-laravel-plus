@@ -1,5 +1,5 @@
 import moment from 'moment'
 
-export function fromNow (date) {
-    return moment(date).locale('vi').fromNow()
+export function dateFormat (date, format = 'DD/MM/YYYY') {
+  return moment(date).format(format)
 }

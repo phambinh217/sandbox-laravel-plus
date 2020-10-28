@@ -2,10 +2,7 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use File;
-
-class PackAuthCommand extends Command
+class PackAuthCommand extends Pack
 {
     protected $signature = 'pack:auth';
 
@@ -23,40 +20,5 @@ class PackAuthCommand extends Command
             'app/Formats/UserFormat.php',
             'app/Services/Auth',
         ];
-    }
-
-    public function handle()
-    {
-        $this->clearOldDir();
-        $this->pack();
-
-        $this->info('Packed sucessfuly!');
-    }
-
-    private function clearOldDir()
-    {
-        File::cleanDirectory($this->packToDir());
-    }
-
-    private function pack()
-    {
-        $files = $this->files();
-        foreach ($files as $file) {
-            $originalPath = base_path($file);
-            $destPath = $this->packToDir($file);
-            if (is_file($originalPath)) {
-                $dirname = dirname($destPath);
-                if (!is_dir($dirname)) {
-                    mkdir($dirname, 0777, true);
-                }
-
-                File::copy($originalPath, $destPath);
-                continue;
-            }
-
-            if (is_dir($originalPath)) {
-                File::copyDirectory($originalPath, $destPath, true);
-            }
-        }
     }
 }

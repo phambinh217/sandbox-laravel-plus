@@ -1,31 +1,31 @@
 <template>
-    <div class="avatar" :style="avatarStyle" />
+  <div class="avatar" :style="avatarStyle" />
 </template>
 
 <script>
 export default {
-    props: {
-        src: {
-            type: String,
-            required: true
-        },
-
-        width: {
-            type: String,
-            required: true
-        }
+  props: {
+    src: {
+      type: String,
+      required: true
     },
 
-    computed: {
-        avatarStyle () {
-            return {
-                width: this.width,
-                height: this.width,
-                flex: `0 0 ${this.width}`,
-                backgroundImage: `url(${this.src})`,
-            }
-        }
+    width: {
+      type: String,
+      required: true
     }
+  },
+
+  computed: {
+    avatarStyle () {
+      return {
+        width: this.width,
+        height: this.width,
+        flex: `0 0 ${this.width}`,
+        backgroundImage: `url(${this.src})`,
+      }
+    }
+  }
 }
 </script>
 
