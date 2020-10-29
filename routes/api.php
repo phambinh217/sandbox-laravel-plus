@@ -21,8 +21,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('init', 'MainController@init')->name('init');
         Route::delete('auth/logout', 'AuthController@logout')->name('auth.logout');
-        Route::get('auth/user', 'AuthController@user')->name('auth.user');
-        Route::put('account/password', 'AccountController@changePassword')->name('account.change-password');
+        Route::get('account', 'AuthController@user')->name('account.user');
         Route::put('account', 'AccountController@update')->name('account.update');
+        Route::put('account/password', 'AccountController@changePassword')->name('account.change-password');
     });
 });
