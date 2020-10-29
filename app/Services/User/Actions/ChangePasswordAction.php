@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Auth\Actions;
+namespace App\Services\User\Actions;
 
 use Phambinh217\LaravelPlus\Executor\Result;
 use Validator;

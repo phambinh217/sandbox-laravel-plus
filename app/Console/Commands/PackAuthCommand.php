@@ -17,8 +17,10 @@ class PackAuthCommand extends Pack
     {
         return [
             'app/Http/Controllers/AuthController.php',
+            'app/Http/Controllers/AccountController.php',
             'app/Formats/UserFormat.php',
             'app/Services/Auth',
+            'app/Services/User',
         ];
     }
 }

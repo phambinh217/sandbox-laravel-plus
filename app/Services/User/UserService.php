@@ -13,6 +13,7 @@ class UserService extends BaseService
         'create' => Actions\CreateUserAction::class,
         'update' => Actions\UpdateUserAction::class,
         'delete' => Actions\DeleteUserAction::class,
+        'changePassword' => Actions\ChangePasswordAction::class,
     ];
 
     public function find($id)

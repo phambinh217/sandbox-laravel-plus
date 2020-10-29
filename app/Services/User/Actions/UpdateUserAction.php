@@ -7,6 +7,7 @@ use Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
+use Arr;
 
 class UpdateUserAction
 {
@@ -19,20 +20,24 @@ class UpdateUserAction
             return Result::error($message, new ValidationException($validator));
         }
 
-        $user = $this->create($data);
+        $user = $this->update($user, $data);
 
         return Result::success($user);
     }
 
     private function update(User $user, array $data)
     {
-        return $user->update($data);
+        return $user->update(Arr::only($data, [
+            'name'
+        ]));
     }
 
     private function validate($data)
     {
         $validator = Validator::make($data, [
-            //
+            'name' => 'nullable|required'
+        ], [
+            'name.required' => 'Họ và tên không được để trống'
         ]);
 
         return $validator;

@@ -14,17 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::post('auth/register', 'AuthController@register')->name('auth.register');
     Route::post('auth/login', 'AuthController@login')->name('auth.login');
 
     Route::group(['middleware' => 'auth:sanctum'], function () {
+        Route::get('init', 'MainController@init')->name('init');
         Route::delete('auth/logout', 'AuthController@logout')->name('auth.logout');
         Route::get('auth/user', 'AuthController@user')->name('auth.user');
-        Route::put('auth/password', 'AuthController@changePassword')->name('auth.change-password');
+        Route::put('account/password', 'AccountController@changePassword')->name('account.change-password');
+        Route::put('account', 'AccountController@update')->name('account.update');
     });
 });
