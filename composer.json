@@ -37,7 +37,6 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Phambinh217\\LaravelPlus\\": "packages/laravel-plus/src/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
