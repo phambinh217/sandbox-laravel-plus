@@ -15,7 +15,6 @@ module.exports = {
         'vue',
     ],
     rules: {
-        // 'indent': ['error', 4],
         'vue/html-indent': ['error', 2],
         'vue/script-indent': ['error', 2],
         'vue/max-attributes-per-line': [0, {
@@ -31,4 +30,4 @@ module.exports = {
         'vue/singleline-html-element-content-newline': 'off',
         'vue/multiline-html-element-content-newline': 'off',
     },
-};
+}
